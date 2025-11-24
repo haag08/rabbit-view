@@ -26,9 +26,7 @@ export let store = $state({
 		store.listRabbits();
 	},
 	deleteRabbit: async function (id) {
-		const response = await fetch('http://' + serverAddress + ':7070/rabbits/' + id, {
-			method: 'DELETE'
-		});
+		await pb.collection('rabbits').delete(id);
 		store.listRabbits();
 	},
 	addRabbit: async (name) => {
