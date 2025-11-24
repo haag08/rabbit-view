@@ -16,7 +16,7 @@ export let store = $state({
 			name: newName
 		};
 		try {
-			const record = await pb.collection('rabbits').update('id', editedRabbit);
+			const record = await pb.collection('rabbits').update(id, editedRabbit);
 			if (!response.ok) {
 				alert(await response.text());
 			}
