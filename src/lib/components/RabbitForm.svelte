@@ -6,12 +6,15 @@
 
 	let rabbit = $state({
 		name: 'New Name',
-		rabithole: ''
+		rabbithole: '',
+		eyecolour: ''
 	});
 	let rabbithole = $state(null);
 	let wrongRabbitName = $derived(rabbit.name.length > 0 && rabbit.name[0] !== 'J');
 
 	let rabbitholes = $state([]);
+
+	let eyecolours = $state([]);
 
 	async function addRabbit() {
 		await store.addRabbit(rabbit);
@@ -25,6 +28,7 @@
 
 	$effect(async () => {
 		rabbitholes = await pb.collection('rabbitholes').getFullList();
+		eyecolours = await pb.collection('eyecolours').getFullList();
 		if (rabbitId) {
 			rabbit = Object.assign(
 				{},
@@ -52,6 +56,17 @@
 			<select bind:value={rabbit.rabbithole}>
 				{#each rabbitholes as rabbithole (rabbithole.id)}
 					<option value={rabbithole.id}>{rabbithole.name}</option>
+				{/each}
+			</select>
+		</label>
+	</div>
+
+	<div>
+		<label class="select">
+			<span class="label">Eyecolour</span>
+			<select bind:value={rabbit.eyecolour}>
+				{#each eyecolours as eyecolour (eyecolour.id)}
+					<option value={eyecolour.id}>{eyecolour.name}</option>
 				{/each}
 			</select>
 		</label>
