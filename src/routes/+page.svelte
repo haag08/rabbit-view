@@ -19,10 +19,11 @@
 <!-- unser Template / HTML-Teil der Seite bzw. der Komponente -->
 <h1 class="text-3xl">Our Rabbits</h1>
 
-<div class="grid w-[200px] grid-cols-[32px_1fr_1fr_32px_32px] items-end">
+<div class="grid w-[300px] grid-cols-[32px_1fr_1fr_1fr_32px_32px] items-end">
 	<div>Nr.</div>
 	<div>Name</div>
 	<div>Hasenbau</div>
+	<div>Augenfarbe</div>
 	<div></div>
 	<div></div>
 
@@ -31,6 +32,11 @@
 		<div class="pr-3">{rabbit.name}</div>
 		{#if rabbit.expand.rabbithole}
 			<div class="pr-3">{rabbit.expand.rabbithole.name}</div>
+		{:else}
+			<div></div>
+		{/if}
+		{#if rabbit.expand.eyecolour}
+			<div class="pr-3">{rabbit.expand.eyecolour.name}</div>
 		{:else}
 			<div></div>
 		{/if}
